@@ -33,6 +33,7 @@
                 <include>license-header.txt</include>
                 <include>LICENSE.txt</include>
                 <include>README.md</include>
+                <include>Jenkinsfile</include>
             </includes>
         </fileSet>
         <fileSet encoding="UTF-8">
