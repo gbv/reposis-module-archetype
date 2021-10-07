@@ -26,13 +26,13 @@
     <artifactId>${artifactId}</artifactId>
     <version>${version}</version>
     <properties>
-        <mycore.version>2021.06.0-SNAPSHOT</mycore.version>
+        <mycore.version>2020.06.3-SNAPSHOT</mycore.version>
         <MCR.AppName>${projectName}</MCR.AppName>
     </properties>
     <parent>
         <groupId>de.vzg.reposis</groupId>
         <artifactId>reposis_parent</artifactId>
-        <version>2021.06-SNAPSHOT</version>
+        <version>2020.06-SNAPSHOT</version>
     </parent>
     <repositories>
         <repository>
@@ -59,6 +59,7 @@
         </pluginRepository>
     </pluginRepositories>
     <dependencies>
+        <!-- enable theese if you write code using them
         <dependency>
             <groupId>org.mycore</groupId>
             <artifactId>mycore-base</artifactId>
@@ -70,6 +71,19 @@
         <dependency>
             <groupId>org.mycore</groupId>
             <artifactId>mycore-pi</artifactId>
+        </dependency>
+        -->
+        <dependency>
+            <groupId>com.sun.activation</groupId>
+            <artifactId>jakarta.activation</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>jakarta.servlet</groupId>
+            <artifactId>jakarta.servlet-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.mycore</groupId>
+            <artifactId>selenium-utils</artifactId>
         </dependency>
     </dependencies>
     <build>
