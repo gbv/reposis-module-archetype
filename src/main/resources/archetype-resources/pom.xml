@@ -23,7 +23,7 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>de.gbv.reposis</groupId>
-        <artifactId>reposis_parent</artifactId>
+        <artifactId>reposis_mir_parent</artifactId>
         <version>2020.06-SNAPSHOT</version>
     </parent>
 
@@ -32,7 +32,6 @@
     <version>${version}</version>
     <properties>
         <MCR.AppName>${projectName}</MCR.AppName>
-        <mycore.version>2020.06.3-SNAPSHOT</mycore.version>
     </properties>
 
     <build>
