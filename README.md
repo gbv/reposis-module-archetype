@@ -13,8 +13,9 @@ Ein Template für alle Reposis-Anwendungen als maven-archetype.
   * `mvn archetype:generate`
     * de.gbv.ostasien groupId
     * artifactID reposis_ostasion
-    * version 2021.06-SNAPSHOT
+    * version 2022.06-SNAPSHOT
   * erstellt reposis_ostasien mit entsprechender Struktur
+  * die `gitignore` Datei muss noch in `.gitignore` umbenannt werden. (liegt an einem Bug in Maven)
 
 ### Dateien
 
@@ -28,14 +29,14 @@ Ein Template für alle Reposis-Anwendungen als maven-archetype.
 ### Allgemeines
   * setup-reposis_ostasien.txt - enthält CLI-Befehle z.B. anpassen von Klassifikation die nur für diese Anwendung benötigt werden
   * CI=true mvn clean install  -> baut analog zu Jenkins, benötigt lokal installierten WebDriver
-  * einfacher Seleniumtest zum prüfen ob Anwendung noch startet -> wichtig, muss mit IT enden! (z.B. https://github.com/gbv/reposis_digibib/blob/2021.06/src/test/java/de/vzg/reposis/digibib/DigibibLibIT.java)
+  * einfacher Seleniumtest zum Prüfen ob Anwendung noch startet → wichtig, muss mit IT enden! (z.B. https://github.com/gbv/reposis_digibib/blob/2021.06/src/test/java/de/vzg/reposis/digibib/DigibibLibIT.java)
 
 ### Verzeichnissstruktur 
 
   * src/
     * main/ - Alle Dateien die später im Jar Laden
       * java/ - Enthält Java Code speziell für diese Anwendung
-      * resources/  - Resourcen die über den "Classpath" zur verfügung stehen
+      * resources/ - Resourcen die über den "Classpath" zur verfügung stehen
       * META-INF/resources - Web Resourcen welche im Kontext der Anwedung abrufbar sind
     * test/ - Alle Dateien für das Testen der Anwendung
       * java/ - Enthält Java Code zum Testen der Anwendung  
