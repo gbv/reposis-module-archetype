@@ -13,7 +13,7 @@ Ein Template für alle Reposis-Anwendungen als maven-archetype.
   * `mvn archetype:generate`
     * de.gbv.ostasien groupId
     * artifactID reposis_ostasion
-    * version 2022.06-SNAPSHOT
+    * version 2024.06-SNAPSHOT
   * erstellt reposis_ostasien mit entsprechender Struktur
   * die `gitignore` Datei muss noch in `.gitignore` umbenannt werden. (liegt an einem Bug in Maven)
 
