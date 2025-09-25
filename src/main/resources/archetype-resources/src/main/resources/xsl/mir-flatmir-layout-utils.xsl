@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="1.0"
-                xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-                xmlns:i18n="xalan://org.mycore.services.i18n.MCRTranslation"
-                xmlns:mcrver="xalan://org.mycore.common.MCRCoreVersion"
-                xmlns:mcrxsl="xalan://org.mycore.common.xml.MCRXMLFunctions"
-                exclude-result-prefixes="i18n mcrver mcrxsl">
+    xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+    xmlns:i18n="xalan://org.mycore.services.i18n.MCRTranslation"
+    xmlns:mcrver="xalan://org.mycore.common.MCRCoreVersion"
+    xmlns:mcrxsl="xalan://org.mycore.common.xml.MCRXMLFunctions"
+    exclude-result-prefixes="i18n mcrver mcrxsl">
 
   <xsl:import href="resource:xsl/layout/mir-common-layout.xsl" />
 
@@ -13,7 +13,7 @@
     <div id="header_box" class="clearfix container">
       <div id="options_nav_box" class="mir-prop-nav">
         <nav>
-          <ul class="navbar-nav ml-auto flex-row">
+          <ul class="navbar-nav ms-auto flex-row">
             <xsl:call-template name="mir.loginMenu" />
             <xsl:call-template name="mir.languageMenu" />
           </ul>
@@ -46,34 +46,54 @@
               <span class="navbar-toggler-icon"></span>
             </button>
 
-          <div id="mir-main-nav-collapse-box" class="collapse navbar-collapse mir-main-nav__entries">
-            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-              <xsl:for-each select="$loaded_navigation_xml/menu">
-                <xsl:choose>
-                  <!-- Ignore some menus, they are shown elsewhere in the layout -->
-                  <xsl:when test="@id='main'"/>
-                  <xsl:when test="@id='brand'"/>
-                  <xsl:when test="@id='below'"/>
-                  <xsl:when test="@id='user'"/>
-                  <xsl:otherwise>
-                    <xsl:apply-templates select="."/>
-                  </xsl:otherwise>
-                </xsl:choose>
-              </xsl:for-each>
-              <xsl:call-template name="mir.basketMenu" />
-            </ul>
+            <div
+              id="mir-main-nav-collapse-box"
+              class="collapse navbar-collapse mir-main-nav__entries justify-content-between">
+
+              <ul class="navbar-nav me-auto mt-2 mt-lg-0">
+                <xsl:for-each select="$loaded_navigation_xml/menu">
+                  <xsl:choose>
+                    <!-- Ignore some menus, they are shown elsewhere in the layout -->
+                    <xsl:when test="@id='main'"/>
+                    <xsl:when test="@id='brand'"/>
+                    <xsl:when test="@id='below'"/>
+                    <xsl:when test="@id='user'"/>
+                    <xsl:otherwise>
+                      <xsl:apply-templates select="."/>
+                    </xsl:otherwise>
+                  </xsl:choose>
+                </xsl:for-each>
+                <xsl:call-template name="mir.basketMenu" />
+              </ul>
 
             <form
               action="{$WebApplicationBaseURL}servlets/solr/find"
-              class="searchfield_box form-inline my-2 my-lg-0"
+              class="searchfield_box d-flex"
               role="search">
+              <!-- Check if 'initialCondQuery' exists and extract its value if it does -->
+              <xsl:variable name="initialCondQuery" select="/response/lst[@name='responseHeader']/lst[@name='params']/str[@name='initialCondQuery']" />
+
               <input
                 name="condQuery"
                 placeholder="{i18n:translate('mir.navsearch.placeholder')}"
-                class="form-control mr-sm-2 search-query"
+                class="form-control me-sm-2 search-query"
                 id="searchInput"
                 type="text"
                 aria-label="Search" />
+
+              <input type="hidden" id="initialCondQueryMirFlatmirLayout" name="initialCondQuery">
+                <xsl:attribute name="value">
+                  <xsl:choose>
+                    <xsl:when test="$initialCondQuery">
+                      <xsl:value-of select="$initialCondQuery"/>
+                    </xsl:when>
+                    <xsl:otherwise>
+                      <xsl:value-of select="'*'"/>
+                    </xsl:otherwise>
+                  </xsl:choose>
+                </xsl:attribute>
+              </input>
+
               <xsl:choose>
                 <xsl:when test="contains($isSearchAllowedForCurrentUser, 'true')">
                   <input name="owner" type="hidden" value="createdby:*" />
@@ -82,11 +102,12 @@
                   <input name="owner" type="hidden" value="createdby:{$CurrentUser}" />
                 </xsl:when>
               </xsl:choose>
+
               <button type="submit" class="btn btn-primary my-2 my-sm-0">
                 <i class="fas fa-search"></i>
               </button>
             </form>
-
+            </div>
           </div>
 
         </nav>
