@@ -12,26 +12,26 @@ Ein Template für alle Reposis-Anwendungen als maven-archetype.
 * reposis-Projekt, welches migriert oder neu erstellt werden soll, auschecken und neue Struktur anlegen (hier am Beispiel "francke")
   * `mvn archetype:generate -Dfilter=reposis-module-archetype`
     * Auswahl meist 1 (local: reposis-module-archetype)
-    * projectName: francke
-    * groupId: de.gbv.reposis
-    * artifactId: reposis_francke
-    * package: de.gbv.reposis (default)
-    * version: 1.0-SNAPSHOT (default)
-  * erstellt reposis_francke mit entsprechender Struktur
+    * `projectName: francke`
+    * `groupId: de.gbv.reposis`
+    * `artifactId: reposis_francke`
+    * `package: de.gbv.reposis` (default)
+    * `version: 1.0-SNAPSHOT` (default)
+  * erstellt `reposis_francke` mit entsprechender Struktur
   * die `gitignore` Datei muss noch in `.gitignore` umbenannt werden. (liegt an einem Bug in Maven)
 
 ### Dateien (bei Migration)
 
-* Kopieren von save/webpages/ zu src/main/resources/META-INF/resources/
-* Kopieren von resources/ zu src/main/resources
-* Vorerst löschen von resources/log4j2.xml
+* Kopieren von `save/webpages/` zu `src/main/resources/META-INF/resources/`
+* Kopieren von `resources/` zu `src/main/resources`
+* Vorerst löschen von `resources/log4j2.xml`
 * Properties
   * Es muss unterschieden werden in Properties die nur für das Test oder Produktiv-System sind, oder welche die für alle Allg. sind
   * Nur die allg. Properties sollten in dem Modul enthalten sein
 
 ### Allgemeines
-  * setup-reposis_francke.txt - enthält CLI-Befehle z.B. anpassen von Klassifikation die nur für diese Anwendung benötigt werden
-  * CI=true mvn clean install  -> baut analog zu Jenkins, benötigt lokal installierten WebDriver
+  * `setup-reposis_francke.txt` → enthält CLI-Befehle z.B. anpassen von Klassifikation die nur für diese Anwendung benötigt werden
+  * `CI=true mvn clean install` → baut analog zu GitHub, benötigt lokal installierten WebDriver
   * einfacher Seleniumtest zum Prüfen ob Anwendung noch startet → wichtig, muss mit IT enden! (z.B. https://github.com/gbv/reposis_digibib/blob/2021.06/src/test/java/de/vzg/reposis/digibib/DigibibLibIT.java)
 
 ### Verzeichnissstruktur 
@@ -45,5 +45,5 @@ Ein Template für alle Reposis-Anwendungen als maven-archetype.
       * java/ - Enthält Java Code zum Testen der Anwendung  
 
 ## Troubleshooting
-* mvn clean install -Pauto-update   -> sortiert pom.xml
-* CI=true mvn solr-runner:stop      -> stoppt jenkins-Solr im Falle eines Test-Fehlers 
+* `mvn clean install -Pauto-update`   → sortiert pom.xml
+* `CI=true mvn solr-runner:stop`      → stoppt GitHub-Solr im Falle eines Test-Fehlers 
