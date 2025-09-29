@@ -16,7 +16,7 @@ Ein Template für alle Reposis-Anwendungen als maven-archetype.
     * `groupId: de.gbv.reposis`
     * `artifactId: reposis_francke`
     * `package: de.gbv.reposis` (default)
-    * `version: 2025.06-SNAPSHOT` (default)
+    * `version: 2025.06-SNAPSHOT` (matching MyCoRe-Version)
   * erstellt `reposis_francke` mit entsprechender Struktur
   * die `gitignore` Datei muss noch in `.gitignore` umbenannt werden. (liegt an einem Bug in Maven)
 
