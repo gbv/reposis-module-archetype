@@ -1,0 +1,186 @@
+#
+# This file is part of ***  M y C o R e  ***
+# See http://www.mycore.de/ for details.
+#
+# MyCoRe is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# MyCoRe is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with MyCoRe.  If not, see <http://www.gnu.org/licenses/>.
+#
+
+#set( $symbol_pound = '#' )
+#set( $symbol_dollar = '$' )
+#set( $symbol_escape = '\' )
+#${symbol_pound} ${symbol_dollar}Revision${symbol_dollar} : ${symbol_dollar}Date${symbol_dollar}
+#----------------------------------------------------------------------------------------------------------------------
+
+#READ ME:
+
+# This mycore.properties template file is organised like this:
+### Necessary properties for minimal configuration. You should set them yourself.
+### Optional (layout) properties. They are already set correctly in MIR or MyCoRe. Delete them from here if you do not override them
+
+
+#----------------------------------------------------------------------------------------------------------------------
+
+#######################################################################################################################
+# Those should be set to a value                                                                                      #
+#######################################################################################################################
+# application base URL
+# MCR.baseurl=http://.../
+MCR.NameOfProject=${projectName}
+MCR.Metadata.Languages=
+
+MIR.projectid.default=${projectName}
+MIR.testEnvironment=true
+MCR.SASS.DeveloperMode=true
+MCR.baseurl=
+
+# SOLR
+MCR.Solr.Core.main.Name=
+MCR.Solr.Core.classification.Name=
+MCR.Solr.ServerURL=
+
+# Datadirectory
+MCR.datadir=
+MCR.Save.FileSystem=
+
+# The server for outgoing mails
+MCR.Mail.Server=
+# The mail protocol
+MCR.Mail.Protocol=
+# The debug option
+MCR.Mail.Debug=
+# Encoding for the mail
+MCR.Mail.Encoding=
+# Number of send tries
+MCR.Mail.NumTries=
+#Editor Mail adresses for Messages add1@serv1,add2@serv2,...
+MCR.Mail.Address=
+MCR.mir-module.EditorMail=
+MCR.mir-module.MailSender=
+
+
+
+##############################################################################
+#                                                                            #
+# DOI configuration                                                          #
+#                                                                            #
+##############################################################################
+MCR.PI.Service.Datacite.Username=
+MCR.PI.Service.Datacite.Password=
+MCR.PI.Service.Datacite.UseTestServer=
+MCR.PI.Service.Datacite=org.mycore.pi.doi.MCRDOIService
+MCR.PI.Service.Datacite.RegisterBaseURL=
+MCR.PI.Service.Datacite.UseTestPrefix=true
+#set to true in productive to register doi
+MIR.registerDOI=false
+##############################################################################
+#                                                                            #
+# OAI Data Provider                                                          #
+#                                                                            #
+##############################################################################
+MCR.OAIDataProvider.OAI2.RepositoryName=
+MCR.OAIDataProvider.OAI2.RepositoryIdentifier=
+MCR.OAIDataProvider.OAI2.AdminEmail=
+MCR.OAIDataProvider.OAI2.RecordSampleID=
+##############################################################################
+# MIR ePuSta                                                                 #
+##############################################################################
+# show ePuSta Statistics in metadata view ('show', 'hide')
+MIR.ePuSta=
+MIR.ePuSta.GraphProviderURL=
+MIR.ePuSta.Prefix=
+##############################################################################
+# Editor                                                                     #
+##############################################################################
+# Customization of XEditor forms
+MIR.EditorForms.CustomIncludes=
+
+###############################################################################
+# OADOI
+###############################################################################
+MIR.OADOI.Mail.Address=
+
+##############################################################################
+# Error Page                                                                 #
+##############################################################################
+# Set mcr_error properties in your mycore.properties.private to show OA error page without StackTrace
+MCR.ContentTransformer.mcr_error.Stylesheet=xsl/errorPage.xsl,%MCR.LayoutTransformerFactory.Default.Stylesheets%
+
+
+
+#----------------------------------------------------------------------------------------------------------------------
+
+#######################################################################################################################
+# Can be deleted if you do not override and use those properties (mostly layout)                                      #
+#######################################################################################################################
+
+###############################################################################
+# Google - ReCaptcha (https://www.google.com/recaptcha)
+# registered for: ${projectName} ...
+###############################################################################
+MIR.ReCaptcha.secret.key=
+MIR.ReCaptcha.site.key=
+
+##############################################################################
+# specify citation styles                                                    #
+##############################################################################
+MIR.citationStyles=%MCR.Export.CSL.Styles%
+##############################################################################
+# Maximum number of publications that can be outputted within toc            #
+##############################################################################
+MIR.TableOfContents.MaxResults=10000
+# Maximum number of level items per level
+MIR.TableOfContents.LevelLimit=100
+# Files per page in metadata view
+MIR.FileBrowser.FilesPerPage=10
+##############################################################################
+# Workflow                                                                   #
+##############################################################################
+MIR.Workflow.Menu=false
+MIR.Workflow.Box=false
+MIR.Workflow.PDFValidation=false
+##############################################################################
+# Layout                                                                     #
+##############################################################################
+MIR.CustomLayout.JS=${projectName}.js
+MIR.CustomLayout.CSS=${projectName}.css
+MIR.DefaultLayout.CSS=
+MIR.Layout.Theme=
+##############################################################################
+# new Metadata Layout                                                        #
+##############################################################################
+MCR.ContentTransformer.DefaultStep.Stylesheet=%MCR.LayoutTransformerFactory.Default.Stylesheets%
+MCR.ContentTransformer.newMetadataStylesheet.Stylesheet=xslt/metadata/mods-metadata-page.xsl
+MCR.ContentTransformer.newMetadataStylesheet.TransformerFactoryClass=%SAXON%
+MCR.ContentTransformer.mycoreobject.Class=org.mycore.common.content.transformer.MCRTransformerPipe
+MCR.ContentTransformer.mycoreobject.Steps=mycoreobject-modsmeta,newMetadataStylesheet,DefaultStep
+
+MIR.Layout.Top=mir-breadcrumb,search_browsing,mir-message
+MIR.Layout.Start=mir-abstract-badges,mir-workflow,mir-abstract-title,mir-abstract-plus,toc,mir-file-upload,mir-viewer,mir-player,mir-collapse-files,mir-metadata
+MIR.Layout.End=mir-edit,mir-citation,mir-thumbnail,mir-epusta,mir-access-rights,mir-export,mir-admindata,mir-historydata,
+MIR.Layout.Bottom=
+
+#MIR.Layout.Start.Col=col-12 col-lg-8
+#MIR.Layout.End.Col=col-12 col-lg-4
+
+MIR.Layout.Display.Panel=mir-access-rights,mir-export,mir-admindata,mir-citation,mir-thumbnail
+MIR.Layout.Display.Div=mir-edit,mir-abstract-badges
+
+#MIR.Layout.Display.Panel.Icon.mir-access-rights=fas fa-gavel
+#MIR.Layout.Display.Panel.Icon.mir-export=fas fa-share-square
+#MIR.Layout.Display.Panel.Icon.mir-admindata=fas fa-info-circle
+#MIR.Layout.Display.Panel.Icon.mir-citation=fas fa-quote-right
+
+
+
+
