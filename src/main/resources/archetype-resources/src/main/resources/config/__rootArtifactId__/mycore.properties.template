@@ -13,8 +13,8 @@ MCR.Mail.Address=
 MCR.mir-module.EditorMail=
 MCR.mir-module.MailSender=
 
-##############################################################################                                                                            #
-# DOI configuration                                                          #                                                                          #
+##############################################################################
+# DOI configuration                                                          #
 ##############################################################################
 # Configure local or in ansible inventory
 MCR.DOI.Prefix=
@@ -40,8 +40,8 @@ MCR.PI.MetadataService.MODSDOI=org.mycore.mods.identifier.MCRMODSDOIMetadataServ
 MCR.PI.MetadataService.MODSDOI.Type=doi
 MCR.PI.Parsers.doi=org.mycore.pi.doi.MCRDOIParser
 
-##############################################################################                                                                           #
-# OAI Data Provider                                                          #                                                                            #
+##############################################################################
+# OAI Data Provider                                                          #
 ##############################################################################
 MCR.OAIDataProvider.OAI2.RepositoryName=
 MCR.OAIDataProvider.OAI2.RepositoryIdentifier=
