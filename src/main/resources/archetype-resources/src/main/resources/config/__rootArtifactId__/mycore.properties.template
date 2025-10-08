@@ -71,12 +71,8 @@ MIR.Workflow.Box=true
 MIR.EditorForms.CustomIncludes=%MIR.EditorForms.CustomIncludes%,xslStyle:editor/mir2xeditor:webapp:editor/editor-customization.xed
 
 ##############################################################################
-# Error Page                                                                 #
-##############################################################################
-# Set mcr_error properties in your mycore.properties.private to show OA error page without StackTrace
-MCR.ContentTransformer.mcr_error.Stylesheet=xsl/errorPage.xsl,%MCR.LayoutTransformerFactory.Default.Stylesheets%
-
-##############################################################################
-# Layout                                                                     #
+# Frontend                                                                     #
 ##############################################################################
 MIR.CustomLayout.JS=${projectName}.js
+# Set mcr_error properties in your mycore.properties.private to show OA error page without StackTrace
+MCR.ContentTransformer.mcr_error.Stylesheet=xsl/errorPage.xsl,%MCR.LayoutTransformerFactory.Default.Stylesheets%
