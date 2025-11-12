@@ -47,3 +47,31 @@ Ein Template für alle Reposis-Anwendungen als maven-archetype.
 ## Troubleshooting
 * `mvn clean install -Pauto-update`   → sortiert pom.xml
 * `CI=true mvn solr-runner:stop`      → stoppt GitHub-Solr im Falle eines Test-Fehlers 
+
+
+
+
+---
+
+## Grundkonfiguration
+
+1. **`oai-eprints.xml` einrichten**  
+   Diese Datei definiert die OAI-PMH-Eprints-Konfiguration.  
+   Achte darauf, dass sie dem erwarteten Schema und den Repository-Richtlinien entspricht.
+
+2. **`oai-rights.xml` einrichten**  
+   In dieser Datei werden die Rechte- und Zugriffsinformationen für die OAI-Datensätze festgelegt.  
+   Passe sie an die Lizenz- und Zugriffsrichtlinien deines Repositories an.
+
+3. **`mycore.properties` konfigurieren**  
+   - Verwende die bereitgestellte Vorlage als Ausgangspunkt:  
+    
+    > mycore.properties.template 
+     
+   - Öffne anschließend die Datei `mycore.properties` und trage alle erforderlichen Werte ein.
+
+   > ⚠️ **Wichtiger Hinweis:**  
+   > Die Datei `mycore.properties.template` ist **nicht sofort einsatzbereit**.  
+   > Einige Properties sind **absichtlich leer gelassen** — du **musst** sie selbst ausfüllen, bevor das Repository produktiv genutzt werden kann.
+
+
