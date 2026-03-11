@@ -50,7 +50,7 @@
     </item>
   </menu>
   <menu id="browse">
-  <!-- search menu  -->
+    <!-- search menu  -->
     <label xml:lang="de">Blättern</label>
     <label xml:lang="en">Browse</label>
     <item href="/content/browse/institutes.xml" type="intern">
