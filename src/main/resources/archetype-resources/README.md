@@ -1,15 +1,16 @@
 #set($hash = '#')
-
 ${hash} ${projectName}
 
-${hash}${hash} Installation Instructions
+${hash}${hash} Installation instructions
 
 * run `mvn clean install`
-* copy jar to ~/.mycore/(dev-)mir/lib/
+* copy jar to `~/.mycore/(dev-)mir/lib/`
+* configure `~/.mycore/(dev-)mir/.mycore.properties` if necessary
 
 ${hash}${hash} Development
 
-You can add these to your ~/.mycore/(dev-)mir/.mycore.properties
+You can add these to your `~/.mycore/(dev-)mir/.mycore.properties`:
+
 ```
 MCR.Developer.Resource.Override=/path/to/${rootArtifactId}/src/main/resources
 MCR.LayoutService.LastModifiedCheckPeriod=0
