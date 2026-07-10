@@ -73,5 +73,3 @@ Ein Template für alle Reposis-Anwendungen als maven-archetype.
    > ⚠️ **Wichtiger Hinweis:**  
    > Die Datei `mycore.properties.template` ist **nicht sofort einsatzbereit**.  
    > Einige Properties sind **absichtlich leer gelassen** — du **musst** sie selbst ausfüllen, bevor das Repository produktiv genutzt werden kann.
-
-
