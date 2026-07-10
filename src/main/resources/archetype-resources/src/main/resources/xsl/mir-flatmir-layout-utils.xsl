@@ -20,7 +20,7 @@
       </div>
       <div id="project_logo_box">
         <a
-          href="{concat($WebApplicationBaseURL,substring($loaded_navigation_xml/@hrefStartingPage,2),$HttpSession)}"
+          href="{concat($WebApplicationBaseURL,substring($loaded_navigation_xml/@hrefStartingPage,2))}"
           class="">
           <span id="logo_mir">mir</span>
           <span id="logo_modul">mycore</span>
