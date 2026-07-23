@@ -54,7 +54,6 @@ function init() {
   setupGenreObserver(genresToRemove);
   document.querySelector('form.searchfield_box')?.addEventListener('submit', ignoreEmptyFieldsOnSubmit);
   replaceMaskedEmails();
-  randomizeBackground();
   removeGenreOptions(genresToRemove);
 }
 
