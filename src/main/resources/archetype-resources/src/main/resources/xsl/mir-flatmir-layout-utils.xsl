@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="1.0"
-  xmlns:mcracl="xalan://org.mycore.common.xml.MCRXMLFunctions"
-  xmlns:mcri18n="xalan://org.mycore.services.i18n.MCRTranslation"
-  xmlns:mcrversion="xalan://org.mycore.common.MCRCoreVersion"
+  xmlns:mcracl="http://www.mycore.de/xslt/acl"
+  xmlns:mcri18n="http://www.mycore.de/xslt/i18n"
+  xmlns:mcrversion="http://www.mycore.de/xslt/mcrversion"
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-  exclude-result-prefixes="mcracl mcri18n mcrversion">
+  exclude-result-prefixes="#all">
 
-  <xsl:import href="resource:xsl/layout/mir-common-layout.xsl" />
+  <xsl:import href="resource:xslt/layout/mir-common-layout.xsl" />
 
   <xsl:template name="mir.navigation">
     <div id="header_box" class="clearfix container">
@@ -61,45 +61,46 @@
                 </xsl:for-each>
                 <xsl:call-template name="mir.basketMenu" />
               </ul>
-            <form
-              action="{$WebApplicationBaseURL}servlets/solr/find"
-              class="searchfield_box d-flex"
-              role="search">
-              <!-- Check if 'initialCondQuery' exists and extract its value if it does -->
-              <xsl:variable name="initialCondQuery" select="
-                /response/lst[@name='responseHeader']/lst[@name='params']/str[@name='initialCondQuery']
-              " />
-              <input
-                name="condQuery"
-                placeholder="{mcri18n:translate('mir.navsearch.placeholder')}"
-                class="form-control me-sm-2 search-query"
-                id="searchInput"
-                type="text"
-                aria-label="Search" />
-              <input type="hidden" id="initialCondQueryMirFlatmirLayout" name="initialCondQuery">
-                <xsl:attribute name="value">
-                  <xsl:choose>
-                    <xsl:when test="$initialCondQuery">
-                      <xsl:value-of select="$initialCondQuery" />
-                    </xsl:when>
-                    <xsl:otherwise>
-                      <xsl:value-of select="'*'" />
-                    </xsl:otherwise>
-                  </xsl:choose>
-                </xsl:attribute>
-              </input>
-              <xsl:choose>
-                <xsl:when test="contains($isSearchAllowedForCurrentUser, 'true')">
-                  <input name="owner" type="hidden" value="createdby:*" />
-                </xsl:when>
-                 <xsl:when test="not(mcracl:isCurrentUserGuestUser())">
-                  <input name="owner" type="hidden" value="createdby:{$CurrentUser}" />
-                </xsl:when>
-              </xsl:choose>
-              <button type="submit" class="btn btn-primary my-2 my-sm-0">
-                <i class="fas fa-search"></i>
-              </button>
-            </form>
+              <form
+                action="{$WebApplicationBaseURL}servlets/solr/find"
+                class="searchfield_box d-flex"
+                role="search">
+                <!-- Check if 'initialCondQuery' exists and extract its value if it does -->
+                <xsl:variable name="initialCondQuery" select="
+                  /response/lst[@name='responseHeader']/lst[@name='params']/str[@name='initialCondQuery']
+                " />
+                <input
+                  name="condQuery"
+                  placeholder="{mcri18n:translate('mir.navsearch.placeholder')}"
+                  class="form-control me-sm-2 search-query"
+                  id="searchInput"
+                  type="text"
+                  aria-label="Search" />
+                <input type="hidden" id="initialCondQueryMirFlatmirLayout" name="initialCondQuery">
+                  <xsl:attribute name="value">
+                    <xsl:choose>
+                      <xsl:when test="$initialCondQuery">
+                        <xsl:value-of select="$initialCondQuery" />
+                      </xsl:when>
+                      <xsl:otherwise>
+                        <xsl:value-of select="'*'" />
+                      </xsl:otherwise>
+                    </xsl:choose>
+                  </xsl:attribute>
+                </input>
+                <xsl:choose>
+                  <xsl:when test="contains($isSearchAllowedForCurrentUser, 'true')">
+                    <input name="owner" type="hidden" value="createdby:*" />
+                  </xsl:when>
+                  <xsl:when test="not(mcracl:is-current-user-guest-user())">
+                    <input name="owner" type="hidden" value="createdby:{$CurrentUser}" />
+                  </xsl:when>
+                </xsl:choose>
+                <button type="submit" class="btn btn-primary my-2 my-sm-0">
+                  <i class="fas fa-search"></i>
+                </button>
+              </form>
+            </div>
           </div>
         </nav>
       </div>
@@ -158,7 +159,7 @@
   </xsl:template>
 
   <xsl:template name="mir.powered_by">
-    <xsl:variable name="version" select="concat('MyCoRe ', mcrversion:getCompleteVersion())" />
+    <xsl:variable name="version" select="concat('MyCoRe ',mcrversion:complete-version())" />
     <div id="powered_by">
       <a href="http://www.mycore.de">
         <img
